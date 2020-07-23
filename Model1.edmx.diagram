@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e73898f5662b41be85def1309d70b7dd" Name="Diagram1">
+        <EntityTypeShape EntityType="DailyMealsModel.Breakfast" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.BreakfastItem" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.DailyMeal" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.Dinner" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.DinnerItem" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.Lunch" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.LunchItem" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.SnackItem" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DailyMealsModel.Snack" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Breakfast" ManuallyRouted="false" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Dinner" ManuallyRouted="false" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Lunch" ManuallyRouted="false" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks" ManuallyRouted="false" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks1" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks2" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks3" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks4" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks5" />
+        <AssociationConnector Association="DailyMealsModel.FK_DailyMeals_Snacks6" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

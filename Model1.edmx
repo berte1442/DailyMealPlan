@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DailyMealsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Breakfast">
+          <Key>
+            <PropertyRef Name="BreakfastID" />
+          </Key>
+          <Property Name="BreakfastID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BreakfastItems">
+          <Key>
+            <PropertyRef Name="BreakfastItemID" />
+          </Key>
+          <Property Name="BreakfastItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+        </EntityType>
+        <EntityType Name="DailyMeals">
+          <Key>
+            <PropertyRef Name="DailyMealID" />
+          </Key>
+          <Property Name="DailyMealID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BreakfastID" Type="bigint" Nullable="false" />
+          <Property Name="LunchID" Type="bigint" Nullable="false" />
+          <Property Name="DinnerID" Type="bigint" Nullable="false" />
+          <Property Name="SnackID" Type="bigint" Nullable="false" />
+          <Property Name="TotalCals" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Snack2ID" Type="bigint" />
+          <Property Name="Snack3ID" Type="bigint" />
+          <Property Name="Snack4ID" Type="bigint" />
+          <Property Name="Snack5ID" Type="bigint" />
+          <Property Name="Snack6ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="DinnerID" />
+          </Key>
+          <Property Name="DinnerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DinnerItems">
+          <Key>
+            <PropertyRef Name="DinnerItemID" />
+          </Key>
+          <Property Name="DinnerItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Lunch">
+          <Key>
+            <PropertyRef Name="LunchID" />
+          </Key>
+          <Property Name="LunchID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LunchItems">
+          <Key>
+            <PropertyRef Name="LunchItemID" />
+          </Key>
+          <Property Name="LunchItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+        </EntityType>
+        <EntityType Name="SnackItems">
+          <Key>
+            <PropertyRef Name="SnackItemID" />
+          </Key>
+          <Property Name="SnackItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Snacks">
+          <Key>
+            <PropertyRef Name="SnackID" />
+          </Key>
+          <Property Name="SnackID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calories" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DailyMeals_Breakfast">
+          <End Role="Breakfast" Type="Self.Breakfast" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Breakfast">
+              <PropertyRef Name="BreakfastID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="BreakfastID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Dinner">
+          <End Role="Dinner" Type="Self.Dinner" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dinner">
+              <PropertyRef Name="DinnerID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="DinnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Lunch">
+          <End Role="Lunch" Type="Self.Lunch" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lunch">
+              <PropertyRef Name="LunchID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="LunchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="SnackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks1">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks2">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks3">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks4">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack4ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks5">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack5ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks6">
+          <End Role="Snacks" Type="Self.Snacks" Multiplicity="0..1" />
+          <End Role="DailyMeals" Type="Self.DailyMeals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="Snack6ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DailyMealsModelStoreContainer">
+          <EntitySet Name="Breakfast" EntityType="Self.Breakfast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BreakfastItems" EntityType="Self.BreakfastItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyMeals" EntityType="Self.DailyMeals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DinnerItems" EntityType="Self.DinnerItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lunch" EntityType="Self.Lunch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LunchItems" EntityType="Self.LunchItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SnackItems" EntityType="Self.SnackItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Snacks" EntityType="Self.Snacks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DailyMeals_Breakfast" Association="Self.FK_DailyMeals_Breakfast">
+            <End Role="Breakfast" EntitySet="Breakfast" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Dinner" Association="Self.FK_DailyMeals_Dinner">
+            <End Role="Dinner" EntitySet="Dinner" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Lunch" Association="Self.FK_DailyMeals_Lunch">
+            <End Role="Lunch" EntitySet="Lunch" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks" Association="Self.FK_DailyMeals_Snacks">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks1" Association="Self.FK_DailyMeals_Snacks1">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks2" Association="Self.FK_DailyMeals_Snacks2">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks3" Association="Self.FK_DailyMeals_Snacks3">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks4" Association="Self.FK_DailyMeals_Snacks4">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks5" Association="Self.FK_DailyMeals_Snacks5">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks6" Association="Self.FK_DailyMeals_Snacks6">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DailyMealsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Breakfast">
+          <Key>
+            <PropertyRef Name="BreakfastID" />
+          </Key>
+          <Property Name="BreakfastID" Type="Int64" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+          <NavigationProperty Name="DailyMeals" Relationship="Self.FK_DailyMeals_Breakfast" FromRole="Breakfast" ToRole="DailyMeals" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BreakfastItem">
+          <Key>
+            <PropertyRef Name="BreakfastItemID" />
+          </Key>
+          <Property Name="BreakfastItemID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+        </EntityType>
+        <EntityType Name="DailyMeal">
+          <Key>
+            <PropertyRef Name="DailyMealID" />
+          </Key>
+          <Property Name="DailyMealID" Type="Int64" Nullable="false" />
+          <Property Name="BreakfastID" Type="Int64" Nullable="false" />
+          <Property Name="LunchID" Type="Int64" Nullable="false" />
+          <Property Name="DinnerID" Type="Int64" Nullable="false" />
+          <Property Name="SnackID" Type="Int64" Nullable="false" />
+          <Property Name="TotalCals" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Breakfast" Relationship="Self.FK_DailyMeals_Breakfast" FromRole="DailyMeals" ToRole="Breakfast" />
+          <NavigationProperty Name="Dinner" Relationship="Self.FK_DailyMeals_Dinner" FromRole="DailyMeals" ToRole="Dinner" />
+          <NavigationProperty Name="Lunch" Relationship="Self.FK_DailyMeals_Lunch" FromRole="DailyMeals" ToRole="Lunch" />
+          <NavigationProperty Name="Snack" Relationship="Self.FK_DailyMeals_Snacks" FromRole="DailyMeals" ToRole="Snacks" />
+          <Property Name="Snack2ID" Type="Int64" />
+          <Property Name="Snack3ID" Type="Int64" />
+          <Property Name="Snack4ID" Type="Int64" />
+          <Property Name="Snack5ID" Type="Int64" />
+          <Property Name="Snack6ID" Type="Int64" />
+          <NavigationProperty Name="Snack1" Relationship="DailyMealsModel.FK_DailyMeals_Snacks1" FromRole="DailyMeal" ToRole="Snack" />
+          <NavigationProperty Name="Snack2" Relationship="DailyMealsModel.FK_DailyMeals_Snacks2" FromRole="DailyMeal" ToRole="Snack" />
+          <NavigationProperty Name="Snack3" Relationship="DailyMealsModel.FK_DailyMeals_Snacks3" FromRole="DailyMeal" ToRole="Snack" />
+          <NavigationProperty Name="Snack4" Relationship="DailyMealsModel.FK_DailyMeals_Snacks4" FromRole="DailyMeal" ToRole="Snack" />
+          <NavigationProperty Name="Snack5" Relationship="DailyMealsModel.FK_DailyMeals_Snacks5" FromRole="DailyMeal" ToRole="Snack" />
+          <NavigationProperty Name="Snack6" Relationship="DailyMealsModel.FK_DailyMeals_Snacks6" FromRole="DailyMeal" ToRole="Snack" />
+        </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="DinnerID" />
+          </Key>
+          <Property Name="DinnerID" Type="Int64" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+          <NavigationProperty Name="DailyMeals" Relationship="Self.FK_DailyMeals_Dinner" FromRole="Dinner" ToRole="DailyMeals" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DinnerItem">
+          <Key>
+            <PropertyRef Name="DinnerItemID" />
+          </Key>
+          <Property Name="DinnerItemID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Lunch">
+          <Key>
+            <PropertyRef Name="LunchID" />
+          </Key>
+          <Property Name="LunchID" Type="Int64" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+          <NavigationProperty Name="DailyMeals" Relationship="Self.FK_DailyMeals_Lunch" FromRole="Lunch" ToRole="DailyMeals" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LunchItem">
+          <Key>
+            <PropertyRef Name="LunchItemID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+          <Property Name="LunchItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="SnackItem">
+          <Key>
+            <PropertyRef Name="SnackItemID" />
+          </Key>
+          <Property Name="SnackItemID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Snack">
+          <Key>
+            <PropertyRef Name="SnackID" />
+          </Key>
+          <Property Name="SnackID" Type="Int64" Nullable="false" />
+          <Property Name="Calories" Type="Int64" />
+          <NavigationProperty Name="DailyMeals" Relationship="Self.FK_DailyMeals_Snacks" FromRole="Snacks" ToRole="DailyMeals" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DailyMeals1" Relationship="DailyMealsModel.FK_DailyMeals_Snacks1" FromRole="Snack" ToRole="DailyMeal" />
+          <NavigationProperty Name="DailyMeals2" Relationship="DailyMealsModel.FK_DailyMeals_Snacks2" FromRole="Snack" ToRole="DailyMeal" />
+          <NavigationProperty Name="DailyMeals3" Relationship="DailyMealsModel.FK_DailyMeals_Snacks3" FromRole="Snack" ToRole="DailyMeal" />
+          <NavigationProperty Name="DailyMeals4" Relationship="DailyMealsModel.FK_DailyMeals_Snacks4" FromRole="Snack" ToRole="DailyMeal" />
+          <NavigationProperty Name="DailyMeals5" Relationship="DailyMealsModel.FK_DailyMeals_Snacks5" FromRole="Snack" ToRole="DailyMeal" />
+          <NavigationProperty Name="DailyMeals6" Relationship="DailyMealsModel.FK_DailyMeals_Snacks6" FromRole="Snack" ToRole="DailyMeal" />
+          </EntityType>
+        <Association Name="FK_DailyMeals_Breakfast">
+          <End Role="Breakfast" Type="Self.Breakfast" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Breakfast">
+              <PropertyRef Name="BreakfastID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="BreakfastID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Dinner">
+          <End Role="Dinner" Type="Self.Dinner" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dinner">
+              <PropertyRef Name="DinnerID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="DinnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Lunch">
+          <End Role="Lunch" Type="Self.Lunch" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lunch">
+              <PropertyRef Name="LunchID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="LunchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks">
+          <End Role="Snacks" Type="Self.Snack" Multiplicity="1" />
+          <End Role="DailyMeals" Type="Self.DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snacks">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeals">
+              <PropertyRef Name="SnackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DailyMealsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Breakfasts" EntityType="Self.Breakfast" />
+          <EntitySet Name="BreakfastItems" EntityType="Self.BreakfastItem" />
+          <EntitySet Name="DailyMeals" EntityType="Self.DailyMeal" />
+          <EntitySet Name="Dinners" EntityType="Self.Dinner" />
+          <EntitySet Name="DinnerItems" EntityType="Self.DinnerItem" />
+          <EntitySet Name="Lunches" EntityType="Self.Lunch" />
+          <EntitySet Name="LunchItems" EntityType="Self.LunchItem" />
+          <EntitySet Name="SnackItems" EntityType="Self.SnackItem" />
+          <EntitySet Name="Snacks" EntityType="Self.Snack" />
+          <AssociationSet Name="FK_DailyMeals_Breakfast" Association="Self.FK_DailyMeals_Breakfast">
+            <End Role="Breakfast" EntitySet="Breakfasts" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Dinner" Association="Self.FK_DailyMeals_Dinner">
+            <End Role="Dinner" EntitySet="Dinners" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Lunch" Association="Self.FK_DailyMeals_Lunch">
+            <End Role="Lunch" EntitySet="Lunches" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks" Association="Self.FK_DailyMeals_Snacks">
+            <End Role="Snacks" EntitySet="Snacks" />
+            <End Role="DailyMeals" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks1" Association="DailyMealsModel.FK_DailyMeals_Snacks1">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks2" Association="DailyMealsModel.FK_DailyMeals_Snacks2">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks3" Association="DailyMealsModel.FK_DailyMeals_Snacks3">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks4" Association="DailyMealsModel.FK_DailyMeals_Snacks4">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks5" Association="DailyMealsModel.FK_DailyMeals_Snacks5">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyMeals_Snacks6" Association="DailyMealsModel.FK_DailyMeals_Snacks6">
+            <End Role="Snack" EntitySet="Snacks" />
+            <End Role="DailyMeal" EntitySet="DailyMeals" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK_DailyMeals_Snacks1">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks2">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks3">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks4">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack4ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks5">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack5ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyMeals_Snacks6">
+          <End Type="DailyMealsModel.Snack" Role="Snack" Multiplicity="0..1" />
+          <End Type="DailyMealsModel.DailyMeal" Role="DailyMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Snack">
+              <PropertyRef Name="SnackID" />
+            </Principal>
+            <Dependent Role="DailyMeal">
+              <PropertyRef Name="Snack6ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DailyMealsModelStoreContainer" CdmEntityContainer="DailyMealsEntities">
+          <EntitySetMapping Name="Breakfasts">
+            <EntityTypeMapping TypeName="DailyMealsModel.Breakfast">
+              <MappingFragment StoreEntitySet="Breakfast">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BreakfastID" ColumnName="BreakfastID" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BreakfastItems">
+            <EntityTypeMapping TypeName="DailyMealsModel.BreakfastItem">
+              <MappingFragment StoreEntitySet="BreakfastItems">
+                <ScalarProperty Name="BreakfastItemID" ColumnName="BreakfastItemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyMeals">
+            <EntityTypeMapping TypeName="DailyMealsModel.DailyMeal">
+              <MappingFragment StoreEntitySet="DailyMeals">
+                <ScalarProperty Name="Snack6ID" ColumnName="Snack6ID" />
+                <ScalarProperty Name="Snack5ID" ColumnName="Snack5ID" />
+                <ScalarProperty Name="Snack4ID" ColumnName="Snack4ID" />
+                <ScalarProperty Name="Snack3ID" ColumnName="Snack3ID" />
+                <ScalarProperty Name="Snack2ID" ColumnName="Snack2ID" />
+                <ScalarProperty Name="DailyMealID" ColumnName="DailyMealID" />
+                <ScalarProperty Name="BreakfastID" ColumnName="BreakfastID" />
+                <ScalarProperty Name="LunchID" ColumnName="LunchID" />
+                <ScalarProperty Name="DinnerID" ColumnName="DinnerID" />
+                <ScalarProperty Name="SnackID" ColumnName="SnackID" />
+                <ScalarProperty Name="TotalCals" ColumnName="TotalCals" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dinners">
+            <EntityTypeMapping TypeName="DailyMealsModel.Dinner">
+              <MappingFragment StoreEntitySet="Dinner">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DinnerID" ColumnName="DinnerID" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DinnerItems">
+            <EntityTypeMapping TypeName="DailyMealsModel.DinnerItem">
+              <MappingFragment StoreEntitySet="DinnerItems">
+                <ScalarProperty Name="DinnerItemID" ColumnName="DinnerItemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lunches">
+            <EntityTypeMapping TypeName="DailyMealsModel.Lunch">
+              <MappingFragment StoreEntitySet="Lunch">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LunchID" ColumnName="LunchID" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LunchItems">
+            <EntityTypeMapping TypeName="DailyMealsModel.LunchItem">
+              <MappingFragment StoreEntitySet="LunchItems">
+                <ScalarProperty Name="LunchItemID" ColumnName="LunchItemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SnackItems">
+            <EntityTypeMapping TypeName="DailyMealsModel.SnackItem">
+              <MappingFragment StoreEntitySet="SnackItems">
+                <ScalarProperty Name="SnackItemID" ColumnName="SnackItemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Snacks">
+            <EntityTypeMapping TypeName="DailyMealsModel.Snack">
+              <MappingFragment StoreEntitySet="Snacks">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SnackID" ColumnName="SnackID" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

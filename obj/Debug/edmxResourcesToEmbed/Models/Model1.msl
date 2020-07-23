@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DailyMealsModelStoreContainer" CdmEntityContainer="DailyMealsEntities">
+    <EntitySetMapping Name="Breakfasts">
+      <EntityTypeMapping TypeName="DailyMealsModel.Breakfast">
+        <MappingFragment StoreEntitySet="Breakfast">
+          <ScalarProperty Name="BreakfastID" ColumnName="BreakfastID" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BreakfastItems">
+      <EntityTypeMapping TypeName="DailyMealsModel.BreakfastItem">
+        <MappingFragment StoreEntitySet="BreakfastItems">
+          <ScalarProperty Name="BreakfastItemID" ColumnName="BreakfastItemID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyMeals">
+      <EntityTypeMapping TypeName="DailyMealsModel.DailyMeal">
+        <MappingFragment StoreEntitySet="DailyMeals">
+          <ScalarProperty Name="DailyMealID" ColumnName="DailyMealID" />
+          <ScalarProperty Name="BreakfastID" ColumnName="BreakfastID" />
+          <ScalarProperty Name="LunchID" ColumnName="LunchID" />
+          <ScalarProperty Name="DinnerID" ColumnName="DinnerID" />
+          <ScalarProperty Name="SnackID" ColumnName="SnackID" />
+          <ScalarProperty Name="TotalCals" ColumnName="TotalCals" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dinners">
+      <EntityTypeMapping TypeName="DailyMealsModel.Dinner">
+        <MappingFragment StoreEntitySet="Dinner">
+          <ScalarProperty Name="DinnerID" ColumnName="DinnerID" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DinnerItems">
+      <EntityTypeMapping TypeName="DailyMealsModel.DinnerItem">
+        <MappingFragment StoreEntitySet="DinnerItems">
+          <ScalarProperty Name="DinnerItemID" ColumnName="DinnerItemID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lunches">
+      <EntityTypeMapping TypeName="DailyMealsModel.Lunch">
+        <MappingFragment StoreEntitySet="Lunch">
+          <ScalarProperty Name="LunchID" ColumnName="LunchID" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LunchItems">
+      <EntityTypeMapping TypeName="DailyMealsModel.LunchItem">
+        <MappingFragment StoreEntitySet="LunchItems">
+          <ScalarProperty Name="LunchItemsID" ColumnName="LunchItemsID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SnackItems">
+      <EntityTypeMapping TypeName="DailyMealsModel.SnackItem">
+        <MappingFragment StoreEntitySet="SnackItems">
+          <ScalarProperty Name="SnackItemID" ColumnName="SnackItemID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Snacks">
+      <EntityTypeMapping TypeName="DailyMealsModel.Snack">
+        <MappingFragment StoreEntitySet="Snacks">
+          <ScalarProperty Name="SnackID" ColumnName="SnackID" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
